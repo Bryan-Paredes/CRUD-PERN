@@ -24,7 +24,7 @@ export const signin = async (req, res) => {
   return res.json(result.rows[0]);
 };
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   const { name, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -49,6 +49,7 @@ export const signup = async (req, res) => {
     if (error.code === "23505") {
       return res.status(400).json({ message: "Email ya existen" });
     }
+    next(error);
   }
 };
 
@@ -57,4 +58,9 @@ export const signout = (req, res) => {
   res.sendStatus(200);
 };
 
-export const profile = (req, res) => res.send("Perfil de usuario");
+export const profile = async (req, res) => {
+  const result = await pool.query("SELECT * FROM users WHERE id = $1", [
+    req.userId,
+  ]);
+  return res.json(result.rows[0]);
+};
