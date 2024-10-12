@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage";
 import TasksPage from "./pages/TasksPage";
 import TaskFromPage from "./pages/TaskFromPage";
 import AboutPage from "./pages/AboutPage";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
       <Route path="/tasks/new" element={<TaskFromPage />} />
       <Route path="/tasks/1/edit" element={<TaskFromPage />} />
       <Route path="/profile" element={<ProfilePage />} />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
