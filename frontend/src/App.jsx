@@ -7,21 +7,28 @@ import TasksPage from "./pages/TasksPage";
 import TaskFromPage from "./pages/TaskFromPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/navbar/Navbar";
+import { Container } from "./components/ui";
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/about" element={<AboutPage />} />
+    <>
+      <Navbar />
+      <Container className="py-5">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/about" element={<AboutPage />} />
 
-      <Route path="/tasks" element={<TasksPage />} />
-      <Route path="/tasks/new" element={<TaskFromPage />} />
-      <Route path="/tasks/1/edit" element={<TaskFromPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/tasks/new" element={<TaskFromPage />} />
+          <Route path="/tasks/1/edit" element={<TaskFromPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Container>
+    </>
   );
 }

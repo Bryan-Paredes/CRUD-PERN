@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import axios from "../api/axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookie from "js-cookie";
