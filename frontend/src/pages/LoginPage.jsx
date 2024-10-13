@@ -13,24 +13,22 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
 
-  const { signIn, errors } = useAuth();
+  const { signIn, errors: loginErrors } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     const user = await signIn(data);
 
-    if (user) {
-      navigate("/profile");
-    }
+    if (user) navigate("/tasks");
   });
 
   return (
     <Container className="h-[calc(100vh-10rem)] flex items-center justify-center">
       <Card>
-        {errors?.map((err) => (
+        {loginErrors?.map((err) => (
           <p key={err} className="text-red-500 text-sm text-center">
             {err}
           </p>
@@ -48,9 +46,9 @@ export default function LoginPage() {
               },
             })}
           />
-          {/* <span className="text-red-500 text-sm">
+          <span className="text-red-500 text-sm">
             {errors.email?.type ? errors.email.message : null}
-          </span> */}
+          </span>
           <Label htmlFor="password">Password</Label>
           <Input
             type="password"
@@ -62,9 +60,9 @@ export default function LoginPage() {
               },
             })}
           />
-          {/* <span className="text-red-500 text-sm">
+          <span className="text-red-500 text-sm">
             {errors.password?.type ? errors.password.message : null}
-          </span> */}
+          </span>
           <Button>Sign In</Button>
 
           <div className="flex flex-col gap-3 mt-4 text-center border border-gray-300 rounded-md p-3">

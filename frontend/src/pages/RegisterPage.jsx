@@ -32,9 +32,7 @@ export default function RegisterPage() {
     // const dataSignup = await result.json();
     // console.log(dataSignup);
     const user = await signUp(data);
-    if (user) {
-      navigate("/profile");
-    }
+    if (user) navigate("/tasks");
   });
   return (
     <Container className="h-[calc(100vh-10rem)] flex items-center justify-center">

@@ -6,6 +6,9 @@ CREATE TABLE tasks (
 
 ALTER TABLE tasks ADD COLUMN user_id INTEGER REFERENCES users(id);
 
+-- remove unique from title
+ALTER TABLE tasks DROP CONSTRAINT tasks_title_key;
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
