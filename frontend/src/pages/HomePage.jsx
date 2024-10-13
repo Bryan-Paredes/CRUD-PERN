@@ -8,7 +8,7 @@ export default function HomePage() {
     <div>
       <Card>
         <h1 className="text-3xl font-bold my-4 uppercase">
-          Welcome to PERN-TASKS
+          Welcome to PERN-TASKS!
         </h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum, ex
